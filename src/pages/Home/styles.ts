@@ -5,82 +5,48 @@ export const Container = styled('main', {
   flexDirection: 'column',
 });
 
-export const Profile = styled('div', {
-  position: 'relative',
-  display: 'flex',
-  height: '13.25rem',
-  padding: '2rem 2rem 2rem 2.5rem',
-  borderRadius: '0.625rem',
-  backgroundColor: '$blue700',
-  boxShadow: '0 2px 20px rgba(0, 0, 0, 0.2)',
-  gap: '2rem',
-
-  'img': {
-    width: '9.25rem',
-    height: '9.25rem',
-    borderRadius: '0.5rem',
-  },
-
-  '>span': {
-    position: 'absolute',
-    display: 'flex',
-    alignItems: 'center',
-    right: '2rem',
-    color: '$blue',
-    gap: '0.5rem',
-
-    'a': {
-      fontSize: '0.75rem',
-      fontWeight: 'bold',
-      textDecoration: 'none',
-      color: '$blue',
-    },
-
-    'svg': {
-      width: '0.75rem',
-      height: '0.75rem',
-    }
-  }
-});
-
-export const Information = styled('div', {
+export const Search = styled('div', {
   display: 'flex',
   flexDirection: 'column',
-  gap: '0.5rem',
+  gap: '0.75rem',
 
-  'h3': {
-    fontSize: '1.5rem',
-    fontWeight: 'bold',
-    color: '$white',
-  },
-
-  'p': {
-    display: '-webkit-box',
-    fontSize: '1rem',
-    color: '$blue100',
-    overflow: 'hidden',
-    '-webkit-line-clamp': 2,
-    '-webkit-box-orient': 'vertical',
-  },
-
-  'section': {
+  header: {
     display: 'flex',
-    gap: '1.5rem',
-    marginTop: '1rem',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: '4.5rem',
+
+    strong: {
+      fontSize: '1.125rem',
+      color: '$blue200',
+    },
+
+    p: {
+      fontSize: '0.875rem',
+      color: '$blue300',
+    }
+  },
+
+  input: {
+    height: '3.125rem',
+    backgroundColor: '$blue900',
+    border: '1px solid $blue500',
+    borderRadius: '0.375rem',
+    padding: '0.75rem 1rem',
+    fontSize: '1rem',
+    color: '$white',
+
+    '&::placeholder': {
+      color: '$blue400',
+    },
   },
 });
 
-export const Badge = styled('span', {
-  display: 'flex',
+export const PostsGrid = styled('div', {
+  display: 'grid',
   alignItems: 'center',
-  gap: '0.5rem',
-
-  fontSize: '1rem',
-  color: '$blue100',
-
-  'svg': {
-    color: '$blue400',
-    width: '1.125rem',
-    height: '1.125rem',
-  },
+  justifyContent: 'center',
+  gridTemplateColumns: 'repeat(2, 1fr)',
+  gap: '2rem',
+  marginTop: '3rem',
 });
