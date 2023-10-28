@@ -3,6 +3,7 @@ import { Profile } from './components/Profile';
 import * as S from './styles';
 
 export const Home = () => {
+
   return (
     <S.Container>
       <Profile />

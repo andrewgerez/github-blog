@@ -1,7 +1,15 @@
+import { useQuery } from '@tanstack/react-query';
 import * as S from './styles';
 import { GithubLogo, Buildings, Users, LinkSimple } from 'phosphor-react';
+import { api } from '../../../../lib/axios';
 
 export const Profile = () => {
+
+  const { data: gitUser } = useQuery({
+    queryKey: ['gitUser'],
+    queryFn: async () => await api.get('users/drewdevelopment'),
+  });
+
   return (
     <S.Container>
       <img src="https://github.com/drewdevelopment.png" alt="" />
