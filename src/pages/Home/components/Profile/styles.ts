@@ -1,7 +1,6 @@
 import { styled } from "../../../../styles";
 
-
-export const Profile = styled('div', {
+export const Container = styled('div', {
   position: 'relative',
   display: 'flex',
   height: '13.25rem',

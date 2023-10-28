@@ -13,7 +13,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/post:id" element={<Post />} />
+          <Route path="/post" element={<Post />} />
         </Route>
       </Routes>
     </BrowserRouter>

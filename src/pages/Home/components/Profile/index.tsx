@@ -3,7 +3,7 @@ import { GithubLogo, Buildings, Users, LinkSimple } from 'phosphor-react';
 
 export const Profile = () => {
   return (
-    <S.Profile>
+    <S.Container>
       <img src="https://github.com/drewdevelopment.png" alt="" />
       <S.Information>
         <h3>Andrew Gerez</h3>
@@ -35,6 +35,6 @@ export const Profile = () => {
         </a>
         <LinkSimple weight='bold' />
       </span>
-    </S.Profile>
+    </S.Container>
   );
 }
