@@ -3,6 +3,7 @@ import { styled } from "../../styles";
 export const Container = styled('main', {
   display: 'flex',
   flexDirection: 'column',
+  width: '54rem',
 });
 
 export const Search = styled('div', {
@@ -47,6 +48,6 @@ export const PostsGrid = styled('div', {
   alignItems: 'center',
   justifyContent: 'center',
   gridTemplateColumns: 'repeat(2, 1fr)',
-  gap: '2rem',
+  gridGap: '2rem',
   marginTop: '3rem',
 });

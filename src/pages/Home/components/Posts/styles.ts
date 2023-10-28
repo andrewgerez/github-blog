@@ -6,6 +6,12 @@ export const Post = styled('div', {
   padding: '2rem',
   borderRadius: '0.625rem',
   backgroundColor: '$blue600',
+  
+  '&:hover': {
+    cursor: 'pointer',
+    backgroundColor: '$blue500',
+    transition: '0.2s',
+  }
 });
 
 export const Title = styled('span', {
