@@ -1,7 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import * as S from './styles';
+import { Issue } from '../../../../interfaces/issue';
 
-export const Posts = () => {
+interface IPosts {
+  issue: Issue;
+}
+
+export const Posts = ({ issue }: IPosts) => {
   const navigate = useNavigate();
 
   const handleOnClick = () => {
@@ -11,15 +16,12 @@ export const Posts = () => {
   return (
     <S.Post onClick={handleOnClick}>
       <S.Title>
-        <strong>Teste teste teste teste teste teste teste teste teste teste teste teste teste</strong>
+        <strong>{issue.title}</strong>
         <p>Há 1 dia</p>
       </S.Title>
 
       <S.Description>
-        duisahbfduisahfuisahrfuisafhsauifhuisafhsuai
-        dhsauihdsuaihduasidhasuidhsauidhasuidhsauidsha
-        hduisahduisahdsauidhsauidhsauidhsauidhsauidhsauidh
-        dhsauidhsauidhsauidhasuidhsaidhsauidsauihd
+        {issue.body}
       </S.Description>
     </S.Post>
   );

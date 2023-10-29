@@ -1,42 +1,37 @@
-import { useQuery } from '@tanstack/react-query';
 import * as S from './styles';
 import { GithubLogo, Buildings, Users, LinkSimple } from 'phosphor-react';
-import { api } from '../../../../lib/axios';
-import { GitData } from '../../../../interfaces/gitData';
+import { useGitData } from '../../../../hooks/useGitData';
+import { pluralFormatter } from '../../../../utils/pluralFormatter';
 
 export const Profile = () => {
-
-  const { data: gitUser } = useQuery<GitData>({
-    queryKey: ['gitUser'],
-    queryFn: async () => await api.get('users/drewdevelopment'),
-  });
+  const userData = useGitData();
 
   return (
     <S.Container>
-      <img src={gitUser?.data.avatar_url} alt="" />
+      <img src={userData?.avatar_url} alt="" />
       <S.Information>
-        <h3>{gitUser?.data.name}</h3>
-        <p>{gitUser?.data.bio}</p>
+        <h3>{userData?.name}</h3>
+        <p>{userData?.bio}</p>
 
         <section>
           <S.Badge>
             <GithubLogo />
-            {gitUser?.data.login}
+            {userData?.login}
           </S.Badge>
 
           <S.Badge>
             <Buildings weight='fill' />
-            {gitUser?.data.company}
+            {userData?.company}
           </S.Badge>
 
           <S.Badge>
             <Users weight='duotone' />
-            {gitUser?.data.followers} seguidores
+            {pluralFormatter((userData?.followers ?? 1), 'seguidor', 'seguidores')}
           </S.Badge>
         </section>
       </S.Information>
       <span>
-        <a href={`https://github.com/${gitUser?.data.login}`} target="_blank">
+        <a href={`https://github.com/${userData?.login}`} target="_blank">
           GITHUB
         </a>
         <LinkSimple weight='bold' />
