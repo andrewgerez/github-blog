@@ -8,6 +8,7 @@ import { pluralFormatter } from '../../utils/pluralFormatter';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form';
+import { useState, useEffect } from 'react';
 
 const searchIssueSchema = z.object({
   search: z.string(),
@@ -16,18 +17,27 @@ const searchIssueSchema = z.object({
 type SearchIssueInput = z.infer<typeof searchIssueSchema>;
 
 export const Home = () => {
+  const [searchValue, setSearchValue] = useState<string>("");
   const { register } = useForm<SearchIssueInput>({
     resolver: zodResolver(searchIssueSchema),
-  })
+  });
 
   const fetchIssues = async () => {
-    return await api.get('search/issues?q=is:issue%20is:open%20repo:drewdevelopment/github-blog');
+    return await api.get(`search/issues?q=${searchValue}%20repo:drewdevelopment/github-blog`);
   }
 
-  const { data: issues } = useQuery({
+  const { data: issues, refetch } = useQuery({
     queryKey: ['issues'],
     queryFn: fetchIssues,
   });
+
+  useEffect(() => {
+    refetch();
+  }, [refetch, searchValue]);
+  
+  const handleOnSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
+  }
 
   return (
     <S.Container>
@@ -40,16 +50,18 @@ export const Home = () => {
           </p>
         </header>
 
-        <input 
+        <input
           type='text'
           placeholder='Buscar conteúdo'
           {...register('search')}
+          value={searchValue ?? ""}
+          onChange={handleOnSearch}
         />
       </S.Search>
 
       <S.PostsGrid>
         {issues?.items.map((issue: Issue) => (
-          <Posts 
+          <Posts
             key={issue.id}
             issue={issue}
           />
