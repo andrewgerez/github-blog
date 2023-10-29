@@ -2,43 +2,41 @@ import { useQuery } from '@tanstack/react-query';
 import * as S from './styles';
 import { GithubLogo, Buildings, Users, LinkSimple } from 'phosphor-react';
 import { api } from '../../../../lib/axios';
+import { GitData } from '../../../../interfaces/gitData';
 
 export const Profile = () => {
 
-  const { data: gitUser } = useQuery({
+  const { data: gitUser } = useQuery<GitData>({
     queryKey: ['gitUser'],
     queryFn: async () => await api.get('users/drewdevelopment'),
   });
 
   return (
     <S.Container>
-      <img src="https://github.com/drewdevelopment.png" alt="" />
+      <img src={gitUser?.data.avatar_url} alt="" />
       <S.Information>
-        <h3>Andrew Gerez</h3>
-        <p>Hi, my name is Andrew and I'm an 19 year old software developer at Watch Brasil.
-          Passionate about technology and its aspects. I specialize in creating dynamic, easy-to-use
-          interfaces that provide a seamless experience for users
-        </p>
+        <h3>{gitUser?.data.name}</h3>
+        <p>{gitUser?.data.bio}</p>
 
         <section>
           <S.Badge>
             <GithubLogo />
-            drewdevelopment
+            {gitUser?.data.login}
           </S.Badge>
 
           <S.Badge>
             <Buildings weight='fill' />
-            Watch Brasil
+            {gitUser?.data.company}
           </S.Badge>
 
           <S.Badge>
             <Users weight='duotone' />
-            18 seguidores
+            {gitUser?.data.followers} seguidores
           </S.Badge>
         </section>
       </S.Information>
       <span>
-        <a href="https://github.com/drewdevelopment" target="_blank">
+        <a href={`https://github.com/${gitUser?.data.login}`} target="_blank">
           GITHUB
         </a>
         <LinkSimple weight='bold' />
