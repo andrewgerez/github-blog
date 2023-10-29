@@ -5,8 +5,21 @@ import { Profile } from './components/Profile';
 import * as S from './styles';
 import { Issue } from '../../interfaces/issue';
 import { pluralFormatter } from '../../utils/pluralFormatter';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form';
+
+const searchIssueSchema = z.object({
+  search: z.string(),
+});
+
+type SearchIssueInput = z.infer<typeof searchIssueSchema>;
 
 export const Home = () => {
+  const { register } = useForm<SearchIssueInput>({
+    resolver: zodResolver(searchIssueSchema),
+  })
+
   const fetchIssues = async () => {
     return await api.get('search/issues?q=is:issue%20is:open%20repo:drewdevelopment/github-blog');
   }
@@ -27,7 +40,11 @@ export const Home = () => {
           </p>
         </header>
 
-        <input type='text' placeholder='Buscar conteúdo' />
+        <input 
+          type='text'
+          placeholder='Buscar conteúdo'
+          {...register('search')}
+        />
       </S.Search>
 
       <S.PostsGrid>
