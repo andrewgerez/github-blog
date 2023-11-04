@@ -63,7 +63,12 @@ export const PostInfo = styled('div', {
       svg: {
         width: '0.75rem',
         height: '0.75rem',
-      }
+      },
+
+      '&:hover': {
+        cursor: 'pointer',
+        color: '$blue300',
+      },
     },
   },
 });

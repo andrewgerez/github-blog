@@ -26,4 +26,16 @@ export const globalStyles = globalCss({
     
     '-webkit-font-smoothing': 'antialiased',
   },
+
+  '::-webkit-scrollbar': {
+    width: '0.5rem',
+  },
+
+  '::-webkit-scrollbar-track': {
+    backgroundColor: '$blue500',
+  },
+
+  '::-webkit-scrollbar-thumb': {
+    backgroundColor: '$blue700',
+  },
 });

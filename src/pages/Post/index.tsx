@@ -1,6 +1,6 @@
 import { ArrowLeft, CalendarBlank, ChatCircle, GithubLogo, LinkSimple } from 'phosphor-react';
 import * as S from './styles';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Issue } from '../../interfaces/issue';
@@ -9,17 +9,18 @@ import { pluralFormatter } from '../../utils/pluralFormatter';
 
 export const Post = () => {
   const issue: Issue  = useLocation().state.issue;
+  const navigate = useNavigate();
 
   return (
     <S.Container>
       <S.PostInfo>
         <header>
-          <button>
+          <button onClick={() => navigate(-1)}>
             <ArrowLeft weight='bold' />
             VOLTAR
           </button>
           <span>
-            <a href="https://github.com/drewdevelopment" target="_blank">
+            <a href="https://github.com/drewdevelopment/github-blog" target="_blank">
               VER NO GITHUB
             </a>
             <LinkSimple weight='bold' />

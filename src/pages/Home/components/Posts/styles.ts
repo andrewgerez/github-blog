@@ -32,14 +32,19 @@ export const Title = styled('span', {
   p: {
     fontSize: '0.875rem',
     color: '$blue300',
+    marginTop: '0.3125rem',
   }
 });
 
-export const Description = styled('p', {
+export const Description = styled('div', {
   display: '-webkit-box',
   fontSize: '1rem',
   color: '$blue200',
   overflow: 'hidden',
   '-webkit-line-clamp': 4,
   '-webkit-box-orient': 'vertical',
+
+  strong: {
+    fontWeight: 400,
+  },
 });

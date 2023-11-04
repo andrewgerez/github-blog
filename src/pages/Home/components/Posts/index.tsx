@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import * as S from './styles';
 import { Issue } from '../../../../interfaces/issue';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 interface IPosts {
   issue: Issue;
@@ -10,6 +12,7 @@ export const Posts = ({ issue }: IPosts) => {
   const navigate = useNavigate();
 
   const handleOnClick = () => {
+    window.scrollTo(0, 0);
     navigate('/post', { state: { issue: issue }});
   }
 
@@ -21,7 +24,9 @@ export const Posts = ({ issue }: IPosts) => {
       </S.Title>
 
       <S.Description>
-        {issue.body}
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+          {issue.body}
+        </ReactMarkdown>
       </S.Description>
     </S.Post>
   );
