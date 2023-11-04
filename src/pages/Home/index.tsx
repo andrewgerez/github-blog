@@ -23,11 +23,12 @@ export const Home = () => {
   });
 
   const fetchIssues = async () => {
-    return await api.get(`search/issues?q=${searchValue}%20repo:drewdevelopment/github-blog`);
+    return await api.
+      get(`search/issues?q=${searchValue}%20repo:drewdevelopment/github-blog`);
   }
 
   const { data: issues, refetch } = useQuery({
-    queryKey: ['issues'],
+    queryKey: ['issues', searchValue],
     queryFn: fetchIssues,
   });
 
@@ -46,7 +47,7 @@ export const Home = () => {
         <header>
           <strong>Publicações</strong>
           <p>
-            {pluralFormatter((issues?.total_count ?? 0), "publicação", 'publicações')}
+            {pluralFormatter((issues?.total_count ?? 0), 'publicação', 'publicações')}
           </p>
         </header>
 

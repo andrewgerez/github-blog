@@ -85,4 +85,26 @@ export const Badge = styled('span', {
 
 export const PostContent = styled('main', {
   padding: '2.5rem 2rem',
+
+  div: {
+    fontSize: '1rem',
+
+    h3: {
+      margin: '1rem 0',
+    },
+
+    a: {
+      color: '$blue',
+    },
+
+    p: {
+      marginBottom: '1rem',
+    },
+
+    pre: {
+      padding: '1rem',
+      backgroundColor: '$blue600',
+      borderRadius: '0.125rem',
+    },
+  },
 });

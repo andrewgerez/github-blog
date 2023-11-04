@@ -10,7 +10,7 @@ export const Posts = ({ issue }: IPosts) => {
   const navigate = useNavigate();
 
   const handleOnClick = () => {
-    navigate('/post');
+    navigate('/post', { state: { issue: issue }});
   }
 
   return (

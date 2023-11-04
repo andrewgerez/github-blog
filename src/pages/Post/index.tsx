@@ -1,7 +1,12 @@
 import { ArrowLeft, CalendarBlank, ChatCircle, GithubLogo, LinkSimple } from 'phosphor-react';
 import * as S from './styles';
+import { useLocation } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 export const Post = () => {
+  const issue = useLocation().state.issue;
+
   return (
     <S.Container>
       <S.PostInfo>
@@ -18,7 +23,7 @@ export const Post = () => {
           </span>
         </header>
 
-        <h3>JavaScript data types and data structures</h3>
+        <h3>{issue.title}</h3>
 
         <section>
           <S.Badge>
@@ -39,10 +44,11 @@ export const Post = () => {
       </S.PostInfo>
       
       <S.PostContent>
-        <p>dasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsa
-        dasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsa
-        dasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsa
-        </p>
+        <div>
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            {issue.body}
+          </ReactMarkdown>
+        </div>
       </S.PostContent>
     </S.Container>
   );
