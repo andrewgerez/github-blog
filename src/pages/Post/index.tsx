@@ -3,9 +3,12 @@ import * as S from './styles';
 import { useLocation } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { Issue } from '../../interfaces/issue';
+import { dateFormatter } from '../../utils/dateFormatter';
+import { pluralFormatter } from '../../utils/pluralFormatter';
 
 export const Post = () => {
-  const issue = useLocation().state.issue;
+  const issue: Issue  = useLocation().state.issue;
 
   return (
     <S.Container>
@@ -33,12 +36,12 @@ export const Post = () => {
 
           <S.Badge>
             <CalendarBlank weight='fill' />
-            Há 1 dia
+            {dateFormatter({ createdAt: issue.created_at })}
           </S.Badge>
 
           <S.Badge>
             <ChatCircle weight='fill' />
-            5 comentários
+            {pluralFormatter(issue.comments, 'comentário', 'comentários')}
           </S.Badge>
         </section>
       </S.PostInfo>
