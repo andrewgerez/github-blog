@@ -24,7 +24,7 @@ export const Home = () => {
 
   const fetchIssues = async () => {
     return await api.
-      get(`search/issues?q=${searchValue}%20repo:drewdevelopment/github-blog`);
+      get(`search/issues?q=${searchValue}%20repo:andrewgerez/github-blog`);
   }
 
   const { data: issues, refetch } = useQuery({

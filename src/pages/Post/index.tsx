@@ -20,7 +20,7 @@ export const Post = () => {
             VOLTAR
           </button>
           <span>
-            <a href="https://github.com/drewdevelopment/github-blog" target="_blank">
+            <a href="https://github.com/andrewgerez/github-blog" target="_blank">
               VER NO GITHUB
             </a>
             <LinkSimple weight='bold' />
@@ -32,7 +32,7 @@ export const Post = () => {
         <section>
           <S.Badge>
             <GithubLogo />
-            drewdevelopment
+            andrewgerez
           </S.Badge>
 
           <S.Badge>
